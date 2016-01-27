@@ -36,7 +36,6 @@ public class NotFoundMessage extends InvMessage {
 	 */
 	public NotFoundMessage(CompactInteger count, Inventory[] inventory) {
 		super(count, inventory);
-		// TODO Auto-generated constructor stub
 	}
 
 	/*
