@@ -33,6 +33,7 @@ public class BlockHeader {
 	private int time;
 	private int nBits;
 	private int nonce;
+	private CompactInteger txnCount;
 
 	public BlockHeader(int version, byte[] prevBlockHash, byte[] merkleRootHash,
 			int time, int nBits, int nonce) {
@@ -42,6 +43,7 @@ public class BlockHeader {
 		this.setTime(time);
 		this.setnBits(nBits);
 		this.setNonce(nonce);
+		this.setTxnCount(new CompactInteger(0));
 	}
 
 	/**
@@ -132,6 +134,20 @@ public class BlockHeader {
 	 */
 	public void setNonce(int nonce) {
 		this.nonce = nonce;
+	}
+
+	/**
+	 * @return the txnCount
+	 */
+	public CompactInteger getTxnCount() {
+		return txnCount;
+	}
+
+	/**
+	 * @param txnCount the txnCount to set
+	 */
+	public void setTxnCount(CompactInteger txnCount) {
+		this.txnCount = txnCount;
 	}
 
 }
