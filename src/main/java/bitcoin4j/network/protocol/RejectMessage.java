@@ -29,13 +29,13 @@ import javax.smartcardio.CommandAPDU;
  *
  */
 public class RejectMessage implements ControlMessage {
-	
+
 	private static final String commandName = "reject";
 
 	private String message;
 	private RejectEnum code;
 	private String reason;
-	
+
 	/**
 	 * 
 	 */
@@ -45,7 +45,9 @@ public class RejectMessage implements ControlMessage {
 		this.setReason(reason);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see bitcoin4j.network.protocol.Message#getCommandName()
 	 */
 	@Override
