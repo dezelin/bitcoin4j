@@ -28,5 +28,4 @@ package bitcoin4j.network.protocol;
  */
 public interface Message {
 	public MessageHeader getHeader();
-	public void setHeader(MessageHeader header);
 }

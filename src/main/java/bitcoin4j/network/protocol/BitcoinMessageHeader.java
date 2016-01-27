@@ -28,15 +28,16 @@ import java.nio.ByteBuffer;
  * @author dezelin
  *
  */
-public class BlockMessageHeader implements MessageHeader {
+public class BitcoinMessageHeader implements MessageHeader {
 	
 	private String startString;
-	private String commandName = "block";
+	private String commandName;
 	private int payloadSize = 0;
 	private String checksum;
 	
-	public BlockMessageHeader() {		
-		startString = ByteBuffer.allocate(4).putInt(TestnetMagic).toString();
+	public BitcoinMessageHeader(String commandName) {
+		this.setCommandName(commandName);
+		this.setStartString(ByteBuffer.allocate(4).putInt(TestnetMagic).toString());
 	}
 
 	/* (non-Javadoc)
