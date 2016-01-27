@@ -22,7 +22,6 @@
  */
 package bitcoin4j.network.protocol.messages;
 
-import bitcoin4j.network.protocol.structs.CompactInteger;
 import bitcoin4j.network.protocol.structs.Inventory;
 
 /**
@@ -33,14 +32,12 @@ public class InvMessage implements DataMessage {
 
 	private static final String commandName = "inv";
 
-	private CompactInteger count;
 	private Inventory[] inventory;
 
 	/**
 	 * 
 	 */
-	public InvMessage(CompactInteger count, Inventory[] inventory) {
-		this.setCount(count);
+	public InvMessage(Inventory[] inventory) {
 		this.setInventory(inventory);
 	}
 
@@ -57,16 +54,8 @@ public class InvMessage implements DataMessage {
 	/**
 	 * @return the count
 	 */
-	public CompactInteger getCount() {
-		return count;
-	}
-
-	/**
-	 * @param count
-	 *            the count to set
-	 */
-	public void setCount(CompactInteger count) {
-		this.count = count;
+	public int getCount() {
+		return inventory.length;
 	}
 
 	/**

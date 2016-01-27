@@ -23,7 +23,6 @@
 package bitcoin4j.network.protocol.messages;
 
 import bitcoin4j.network.protocol.structs.BlockHeader;
-import bitcoin4j.network.protocol.structs.CompactInteger;
 import bitcoin4j.network.protocol.structs.RawTransaction;
 
 /**
@@ -52,13 +51,10 @@ public class BlockMessage implements DataMessage {
 	private static final String commandName = "block";
 	
 	private BlockHeader blockHeader;
-	private CompactInteger txnCount;
 	private RawTransaction[] txns;
 
-	public BlockMessage(BlockHeader header, CompactInteger txnCount,
-			RawTransaction[] txns) {
+	public BlockMessage(BlockHeader header, RawTransaction[] txns) {
 		this.setBlockHeader(header);
-		this.setTxnCount(txnCount);
 		this.setTxns(txns);
 	}
 
@@ -80,16 +76,8 @@ public class BlockMessage implements DataMessage {
 	/**
 	 * @return the txnCount
 	 */
-	public CompactInteger getTxnCount() {
-		return txnCount;
-	}
-
-	/**
-	 * @param txnCount
-	 *            the txnCount to set
-	 */
-	public void setTxnCount(CompactInteger txnCount) {
-		this.txnCount = txnCount;
+	public int getTxnCount() {
+		return txns.length;
 	}
 
 	/**

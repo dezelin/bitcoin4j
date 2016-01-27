@@ -22,8 +22,6 @@
  */
 package bitcoin4j.network.protocol.messages;
 
-import bitcoin4j.network.protocol.structs.CompactInteger;
-
 /**
  * @author dezelin
  *
@@ -32,14 +30,12 @@ public class FilterAdd implements ControlMessage {
 	
 	private static final String commandName = "filteradd";
 
-	private CompactInteger elementBytes;
 	private byte[] element;
 	
 	/**
 	 * 
 	 */
-	public FilterAdd(CompactInteger elementBytes, byte[] element) {
-		this.setElementBytes(elementBytes);
+	public FilterAdd(byte[] element) {
 		this.setElement(element);
 	}
 
@@ -51,12 +47,8 @@ public class FilterAdd implements ControlMessage {
 		return commandName;
 	}
 
-	public CompactInteger getElementBytes() {
-		return elementBytes;
-	}
-
-	public void setElementBytes(CompactInteger elementBytes) {
-		this.elementBytes = elementBytes;
+	public int getElementBytes() {
+		return element.length;
 	}
 
 	public byte[] getElement() {

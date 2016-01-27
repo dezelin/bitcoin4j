@@ -22,7 +22,6 @@
  */
 package bitcoin4j.network.protocol.messages;
 
-import bitcoin4j.network.protocol.structs.CompactInteger;
 import bitcoin4j.network.protocol.structs.IPAddress;
 
 /**
@@ -33,14 +32,12 @@ public class AddrMessage implements ControlMessage {
 
 	private static final String commandName = "addr";
 
-	private CompactInteger addrCount;
 	private IPAddress[] addresses;
 
 	/**
 	 * 
 	 */
-	public AddrMessage(CompactInteger addrCount, IPAddress[] addresses) {
-		this.setAddrCount(addrCount);
+	public AddrMessage(IPAddress[] addresses) {
 		this.setAddresses(addresses);
 	}
 
@@ -57,16 +54,8 @@ public class AddrMessage implements ControlMessage {
 	/**
 	 * @return the addrCount
 	 */
-	public CompactInteger getAddrCount() {
-		return addrCount;
-	}
-
-	/**
-	 * @param addrCount
-	 *            the addrCount to set
-	 */
-	public void setAddrCount(CompactInteger addrCount) {
-		this.addrCount = addrCount;
+	public int getAddrCount() {
+		return addresses.length;
 	}
 
 	/**

@@ -23,7 +23,6 @@
 package bitcoin4j.network.protocol.messages;
 
 import bitcoin4j.network.protocol.structs.BlockHeader;
-import bitcoin4j.network.protocol.structs.CompactInteger;
 
 /**
  * @author dezelin
@@ -33,14 +32,12 @@ public class HeadersMessage implements DataMessage {
 
 	private static final String commandName = "headers";
 
-	private CompactInteger count;
 	private BlockHeader[] blockHeaders;
 
 	/**
 	 * 
 	 */
-	public HeadersMessage(CompactInteger count, BlockHeader[] headers) {
-		this.setCount(count);
+	public HeadersMessage(BlockHeader[] headers) {
 		this.setBlockHeaders(headers);
 	}
 
@@ -57,16 +54,8 @@ public class HeadersMessage implements DataMessage {
 	/**
 	 * @return the count
 	 */
-	public CompactInteger getCount() {
-		return count;
-	}
-
-	/**
-	 * @param count
-	 *            the count to set
-	 */
-	public void setCount(CompactInteger count) {
-		this.count = count;
+	public int getCount() {
+		return blockHeaders.length;
 	}
 
 	/**

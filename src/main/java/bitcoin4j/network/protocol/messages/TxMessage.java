@@ -22,7 +22,6 @@
  */
 package bitcoin4j.network.protocol.messages;
 
-import bitcoin4j.network.protocol.structs.CompactInteger;
 import bitcoin4j.network.protocol.structs.RawTransaction;
 import bitcoin4j.network.protocol.structs.TxIn;
 import bitcoin4j.network.protocol.structs.TxOut;
@@ -43,9 +42,8 @@ public class TxMessage extends RawTransaction implements DataMessage {
 	 * @param txOut
 	 * @param lockTime
 	 */
-	public TxMessage(int version, CompactInteger txInCount, TxIn[] txIn,
-			CompactInteger txOutCount, TxOut[] txOut, int lockTime) {
-		super(version, txInCount, txIn, txOutCount, txOut, lockTime);
+	public TxMessage(int version, TxIn[] txIn, TxOut[] txOut, int lockTime) {
+		super(version, txIn, txOut, lockTime);
 	}
 
 	/*

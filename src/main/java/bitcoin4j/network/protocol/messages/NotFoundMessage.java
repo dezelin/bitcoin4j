@@ -22,7 +22,6 @@
  */
 package bitcoin4j.network.protocol.messages;
 
-import bitcoin4j.network.protocol.structs.CompactInteger;
 import bitcoin4j.network.protocol.structs.Inventory;
 
 /**
@@ -34,11 +33,10 @@ public class NotFoundMessage extends InvMessage {
 	private static final String commandName = "notfound";
 
 	/**
-	 * @param count
 	 * @param inventory
 	 */
-	public NotFoundMessage(CompactInteger count, Inventory[] inventory) {
-		super(count, inventory);
+	public NotFoundMessage(Inventory[] inventory) {
+		super(inventory);
 	}
 
 	/*

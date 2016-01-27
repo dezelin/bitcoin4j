@@ -22,8 +22,6 @@
  */
 package bitcoin4j.network.protocol.messages;
 
-import bitcoin4j.network.protocol.structs.CompactInteger;
-
 /**
  * @author dezelin
  *
@@ -33,14 +31,12 @@ public class GetBlocksMessage implements DataMessage {
 	private static final String commandName = "getblocks";
 
 	private int version;
-	private CompactInteger hashCount;
 	private byte[][] blockHeaderHashes;
 	private byte[] stopHash;
 
-	public GetBlocksMessage(int version, CompactInteger hashCount,
-			byte[][] blockHeaderHashes, byte[] stopHash) {
+	public GetBlocksMessage(int version, byte[][] blockHeaderHashes,
+			byte[] stopHash) {
 		this.setVersion(version);
-		this.setHashCount(hashCount);
 		this.setBlockHeaderHashes(blockHeaderHashes);
 		this.setStopHash(stopHash);
 	}
@@ -63,16 +59,8 @@ public class GetBlocksMessage implements DataMessage {
 	/**
 	 * @return the hashCount
 	 */
-	public CompactInteger getHashCount() {
-		return hashCount;
-	}
-
-	/**
-	 * @param hashCount
-	 *            the hashCount to set
-	 */
-	public void setHashCount(CompactInteger hashCount) {
-		this.hashCount = hashCount;
+	public int getHashCount() {
+		return blockHeaderHashes.length;
 	}
 
 	/**

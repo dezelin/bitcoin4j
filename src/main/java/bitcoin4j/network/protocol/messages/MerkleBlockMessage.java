@@ -23,7 +23,6 @@
 package bitcoin4j.network.protocol.messages;
 
 import bitcoin4j.network.protocol.structs.BlockHeader;
-import bitcoin4j.network.protocol.structs.CompactInteger;
 
 /**
  * @author dezelin
@@ -35,22 +34,17 @@ public class MerkleBlockMessage implements DataMessage {
 
 	private BlockHeader blockHeader;
 	private int transactionCount;
-	private CompactInteger hashCount;
 	private byte[][] hashes;
-	private CompactInteger flagByteCount;
 	private byte[] flags;
 
 	/**
 	 * 
 	 */
 	public MerkleBlockMessage(BlockHeader blockHeader, int transactionCount,
-			CompactInteger hashCount, byte[][] hashes,
-			CompactInteger flagByteCount, byte[] flags) {
+			byte[][] hashes, byte[] flags) {
 		this.setBlockHeader(blockHeader);
 		this.setTransactionCount(transactionCount);
-		this.setHashCount(hashCount);
 		this.setHashes(hashes);
-		this.setFlagByteCount(flagByteCount);
 		this.setFlags(flags);
 	}
 
@@ -97,16 +91,8 @@ public class MerkleBlockMessage implements DataMessage {
 	/**
 	 * @return the hashCount
 	 */
-	public CompactInteger getHashCount() {
-		return hashCount;
-	}
-
-	/**
-	 * @param hashCount
-	 *            the hashCount to set
-	 */
-	public void setHashCount(CompactInteger hashCount) {
-		this.hashCount = hashCount;
+	public int getHashCount() {
+		return hashes.length;
 	}
 
 	/**
@@ -127,16 +113,8 @@ public class MerkleBlockMessage implements DataMessage {
 	/**
 	 * @return the flagByteCount
 	 */
-	public CompactInteger getFlagByteCount() {
-		return flagByteCount;
-	}
-
-	/**
-	 * @param flagByteCount
-	 *            the flagByteCount to set
-	 */
-	public void setFlagByteCount(CompactInteger flagByteCount) {
-		this.flagByteCount = flagByteCount;
+	public int getFlagByteCount() {
+		return flags.length;
 	}
 
 	/**

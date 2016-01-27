@@ -22,8 +22,6 @@
  */
 package bitcoin4j.network.protocol.messages;
 
-import bitcoin4j.network.protocol.structs.CompactInteger;
-
 /**
  * @author dezelin
  *
@@ -32,19 +30,14 @@ public class AlertMessage implements ControlMessage {
 
 	private static final String commandName = "alert";
 
-	private CompactInteger alertBytes;
 	private byte[] alert;
-	private CompactInteger signatureBytes;
 	private byte[] signature;
 
 	/**
 	 * 
 	 */
-	public AlertMessage(CompactInteger alertBytes, byte[] alert,
-			CompactInteger signatureBytes, byte[] signature) {
-		this.setAlertBytes(alertBytes);
+	public AlertMessage(byte[] alert, byte[] signature) {
 		this.setAlert(alert);
-		this.setSignatureBytes(signatureBytes);
 		this.setSignature(signature);
 	}
 
@@ -58,12 +51,8 @@ public class AlertMessage implements ControlMessage {
 		return commandName;
 	}
 
-	public CompactInteger getAlertBytes() {
-		return alertBytes;
-	}
-
-	public void setAlertBytes(CompactInteger alertBytes) {
-		this.alertBytes = alertBytes;
+	public int getAlertBytes() {
+		return alert.length;
 	}
 
 	public byte[] getAlert() {
@@ -74,12 +63,8 @@ public class AlertMessage implements ControlMessage {
 		this.alert = alert;
 	}
 
-	public CompactInteger getSignatureBytes() {
-		return signatureBytes;
-	}
-
-	public void setSignatureBytes(CompactInteger signatureBytes) {
-		this.signatureBytes = signatureBytes;
+	public int getSignatureBytes() {
+		return signature.length;
 	}
 
 	public byte[] getSignature() {

@@ -30,7 +30,6 @@ public class FilterLoadMessage implements ControlMessage {
 
 	private static final String commandName = "filterload";
 
-	private byte filterBytes;
 	private byte[] filter;
 	private int nHashFunc;
 	private int nTweak;
@@ -39,9 +38,8 @@ public class FilterLoadMessage implements ControlMessage {
 	/**
 	 * 
 	 */
-	public FilterLoadMessage(byte filterBytes, byte[] filter, int nHashFunc,
-			int nTweak, byte nFlags) {
-		this.setFilterBytes(filterBytes);
+	public FilterLoadMessage(byte[] filter, int nHashFunc, int nTweak,
+			byte nFlags) {
 		this.setFilter(filter);
 		this.setnHashFunc(nHashFunc);
 		this.setnTweak(nTweak);
@@ -58,12 +56,8 @@ public class FilterLoadMessage implements ControlMessage {
 		return commandName;
 	}
 
-	public byte getFilterBytes() {
-		return filterBytes;
-	}
-
-	public void setFilterBytes(byte filterBytes) {
-		this.filterBytes = filterBytes;
+	public int getFilterBytes() {
+		return filter.length;
 	}
 
 	public byte[] getFilter() {

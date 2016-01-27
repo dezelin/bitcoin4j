@@ -22,7 +22,6 @@
  */
 package bitcoin4j.network.protocol.messages;
 
-import bitcoin4j.network.protocol.structs.CompactInteger;
 import bitcoin4j.network.protocol.structs.Inventory;
 
 /**
@@ -32,15 +31,15 @@ import bitcoin4j.network.protocol.structs.Inventory;
 public class GetDataMessage extends InvMessage {
 
 	private static String commandName = "getdata";
-	
+
 	/**
 	 * @param count
 	 * @param inventory
 	 */
-	public GetDataMessage(CompactInteger count, Inventory[] inventory) {
-		super(count, inventory);
+	public GetDataMessage(Inventory[] inventory) {
+		super(inventory);
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 

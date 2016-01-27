@@ -28,18 +28,14 @@ package bitcoin4j.network.protocol.structs;
  */
 public class RawTransaction {
 	private int version;
-	private CompactInteger txInCount;
 	private TxIn[] txIn;
-	private CompactInteger txOutCount;
 	private TxOut[] txOut;
 	private int lockTime;
 
-	public RawTransaction(int version, CompactInteger txInCount, TxIn[] txIn,
-			CompactInteger txOutCount, TxOut[] txOut, int lockTime) {
+	public RawTransaction(int version, TxIn[] txIn, TxOut[] txOut,
+			int lockTime) {
 		this.setVersion(version);
-		this.setTxInCount(txInCount);
 		this.setTxIn(txIn);
-		this.setTxOutCount(txOutCount);
 		this.setTxOut(txOut);
 		this.setLockTime(lockTime);
 	}
@@ -62,16 +58,8 @@ public class RawTransaction {
 	/**
 	 * @return the txInCount
 	 */
-	public CompactInteger getTxInCount() {
-		return txInCount;
-	}
-
-	/**
-	 * @param txInCount
-	 *            the txInCount to set
-	 */
-	public void setTxInCount(CompactInteger txInCount) {
-		this.txInCount = txInCount;
+	public int getTxInCount() {
+		return txIn.length;
 	}
 
 	/**
@@ -92,16 +80,8 @@ public class RawTransaction {
 	/**
 	 * @return the txOutCount
 	 */
-	public CompactInteger getTxOutCount() {
-		return txOutCount;
-	}
-
-	/**
-	 * @param txOutCount
-	 *            the txOutCount to set
-	 */
-	public void setTxOutCount(CompactInteger txOutCount) {
-		this.txOutCount = txOutCount;
+	public int getTxOutCount() {
+		return txOut.length;
 	}
 
 	/**
