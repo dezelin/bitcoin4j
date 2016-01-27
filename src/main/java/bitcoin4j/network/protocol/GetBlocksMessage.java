@@ -28,7 +28,7 @@ package bitcoin4j.network.protocol;
  */
 public class GetBlocksMessage implements DataMessage {
 
-	private static String commandName = "getblocks";
+	private static final String commandName = "getblocks";
 
 	private int version;
 	private CompactInteger hashCount;

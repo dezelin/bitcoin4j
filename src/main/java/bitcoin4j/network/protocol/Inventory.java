@@ -28,13 +28,32 @@ import java.security.InvalidParameterException;
  * @author dezelin
  *
  */
-public class Outpoint {
-	private byte[] hash;
-	private int index;
+public class Inventory {
 
-	public Outpoint(byte[] hash, int index) {
+	private InventoryTypeEnum typeIdentifier;
+	private byte[] hash;
+
+	/**
+	 * 
+	 */
+	public Inventory(InventoryTypeEnum typeIdentifier, byte[] hash) {
+		this.setTypeIdentifier(typeIdentifier);
 		this.setHash(hash);
-		this.setIndex(index);
+	}
+
+	/**
+	 * @return the typeIdentifier
+	 */
+	public InventoryTypeEnum getTypeIdentifier() {
+		return typeIdentifier;
+	}
+
+	/**
+	 * @param typeIdentifier
+	 *            the typeIdentifier to set
+	 */
+	public void setTypeIdentifier(InventoryTypeEnum typeIdentifier) {
+		this.typeIdentifier = typeIdentifier;
 	}
 
 	/**
@@ -54,20 +73,5 @@ public class Outpoint {
 		}
 
 		this.hash = hash;
-	}
-
-	/**
-	 * @return the index
-	 */
-	public int getIndex() {
-		return index;
-	}
-
-	/**
-	 * @param index
-	 *            the index to set
-	 */
-	public void setIndex(int index) {
-		this.index = index;
 	}
 }

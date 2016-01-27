@@ -22,52 +22,25 @@
  */
 package bitcoin4j.network.protocol;
 
-import java.security.InvalidParameterException;
-
 /**
  * @author dezelin
  *
  */
-public class Outpoint {
-	private byte[] hash;
-	private int index;
-
-	public Outpoint(byte[] hash, int index) {
-		this.setHash(hash);
-		this.setIndex(index);
+public enum InventoryTypeEnum {
+	MSG_TX (1),
+	MSG_BLOCK (2),
+	MSG_FILTEREDBLOCK (3);
+	
+	private final int typeIdentifier;
+	
+	private InventoryTypeEnum(int typeIdentifier) {
+		this.typeIdentifier = typeIdentifier;
 	}
 
 	/**
-	 * @return the hash
+	 * @return the typeIdentifier
 	 */
-	public byte[] getHash() {
-		return hash;
-	}
-
-	/**
-	 * @param hash
-	 *            the hash to set
-	 */
-	public void setHash(byte[] hash) {
-		if (hash == null || hash.length != 32) {
-			throw new InvalidParameterException();
-		}
-
-		this.hash = hash;
-	}
-
-	/**
-	 * @return the index
-	 */
-	public int getIndex() {
-		return index;
-	}
-
-	/**
-	 * @param index
-	 *            the index to set
-	 */
-	public void setIndex(int index) {
-		this.index = index;
+	public int getTypeIdentifier() {
+		return typeIdentifier;
 	}
 }

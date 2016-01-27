@@ -45,7 +45,8 @@ package bitcoin4j.network.protocol;
  */
 public class BlockMessage implements DataMessage {
 
-	private static String commandName = "block";
+	private static final String commandName = "block";
+	
 	private BlockHeader blockHeader;
 	private CompactInteger txnCount;
 	private RawTransaction[] txns;

@@ -98,7 +98,7 @@ public class CompactInteger {
 		}
 		case 3: {
 			if (value[0] != 0xfd) {
-				throw new InvalidParameterException("Missing prefix byte 0xfd");
+				throw new InvalidParameterException();
 			}
 
 			this.value = value[2] << 8 | value[1];
@@ -106,7 +106,7 @@ public class CompactInteger {
 		}
 		case 5: {
 			if (value[0] != 0xfe) {
-				throw new InvalidParameterException("Missing prefix byte 0xfe");
+				throw new InvalidParameterException();
 			}
 
 			this.value = value[4] << 24 | value[3] << 16 | value[2] << 8
@@ -115,7 +115,7 @@ public class CompactInteger {
 		}
 		case 9: {
 			if (value[0] != 0xff) {
-				throw new InvalidParameterException("Missing prefix byte 0xff");
+				throw new InvalidParameterException();
 			}
 
 			this.value = value[7] << 56 | value[6] << 48 | value[5] << 40
@@ -124,7 +124,7 @@ public class CompactInteger {
 			break;
 		}
 		default: {
-			throw new InvalidParameterException("Invalid compact integer");
+			throw new InvalidParameterException();
 		}
 		}
 	}

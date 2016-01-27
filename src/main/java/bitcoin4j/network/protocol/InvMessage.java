@@ -22,52 +22,63 @@
  */
 package bitcoin4j.network.protocol;
 
-import java.security.InvalidParameterException;
-
 /**
  * @author dezelin
  *
  */
-public class Outpoint {
-	private byte[] hash;
-	private int index;
+public class InvMessage implements Message {
 
-	public Outpoint(byte[] hash, int index) {
-		this.setHash(hash);
-		this.setIndex(index);
+	private static final String commandName = "inv";
+
+	private CompactInteger count;
+	private Inventory[] inventory;
+
+	/**
+	 * 
+	 */
+	public InvMessage(CompactInteger count, Inventory[] inventory) {
+		this.setCount(count);
+		this.setInventory(inventory);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see bitcoin4j.network.protocol.Message#getCommandName()
+	 */
+	@Override
+	public String getCommandName() {
+		return commandName;
 	}
 
 	/**
-	 * @return the hash
+	 * @return the count
 	 */
-	public byte[] getHash() {
-		return hash;
+	public CompactInteger getCount() {
+		return count;
 	}
 
 	/**
-	 * @param hash
-	 *            the hash to set
+	 * @param count
+	 *            the count to set
 	 */
-	public void setHash(byte[] hash) {
-		if (hash == null || hash.length != 32) {
-			throw new InvalidParameterException();
-		}
-
-		this.hash = hash;
+	public void setCount(CompactInteger count) {
+		this.count = count;
 	}
 
 	/**
-	 * @return the index
+	 * @return the inventory
 	 */
-	public int getIndex() {
-		return index;
+	public Inventory[] getInventory() {
+		return inventory;
 	}
 
 	/**
-	 * @param index
-	 *            the index to set
+	 * @param inventory
+	 *            the inventory to set
 	 */
-	public void setIndex(int index) {
-		this.index = index;
+	public void setInventory(Inventory[] inventory) {
+		this.inventory = inventory;
 	}
+
 }
