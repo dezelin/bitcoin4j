@@ -44,30 +44,25 @@ public class DnsSeedsBootstrapper implements Bootstrapper {
 	 */
 	@Override
 	public Future<List<Peer>> retrievePeers() {
-		FutureTask<List<Peer>> futurePeers = new FutureTask<List<Peer>>(new Callable<List<Peer>>() {
-			public List<Peer> call() {
-				return resolvePeers(seeds);
-			}
-		});
-
+		FutureTask<List<Peer>> futurePeers = new FutureTask<List<Peer>>(() -> resolvePeers(seeds));
 		WorkPoolSingleton.getInstance().getExecutor().submit(futurePeers);
 		return futurePeers;
 	}
 
 	private static List<Peer> resolvePeers(List<String> seeds) {
 		List<Peer> peers = new ArrayList<Peer>();
-		for(String host : seeds) {
+		seeds.forEach(host -> {
 			try {
 				InetAddress[] addresses = InetAddress.getAllByName(host);
 				for (InetAddress inetAddress : addresses) {
 					// TODO: For now use only testnet
 					peers.add(new BitcoinPeer(inetAddress, 18333));
 				}
-			} catch (UnknownHostException ex) {
+			} catch (UnknownHostException e) {
 				// TODO: Log error message
 			}
-		}
-		
+		});
+
 		return peers;
 	}
 
