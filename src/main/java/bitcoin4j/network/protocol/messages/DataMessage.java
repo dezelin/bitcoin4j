@@ -20,12 +20,12 @@
 /**
  * 
  */
-package bitcoin4j.network.protocol;
+package bitcoin4j.network.protocol.messages;
 
 /**
  * @author dezelin
  *
  */
-public interface Message {
-	public String getCommandName();
+public interface DataMessage extends Message {
+
 }

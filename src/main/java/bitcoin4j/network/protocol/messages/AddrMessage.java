@@ -22,7 +22,6 @@
  */
 package bitcoin4j.network.protocol.messages;
 
-import bitcoin4j.network.protocol.ControlMessage;
 import bitcoin4j.network.protocol.structs.CompactInteger;
 import bitcoin4j.network.protocol.structs.IPAddress;
 

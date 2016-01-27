@@ -17,15 +17,8 @@
  * THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-/**
- * 
- */
-package bitcoin4j.network.protocol;
+package bitcoin4j.network.protocol.messages;
 
-/**
- * @author dezelin
- *
- */
-public interface DataMessage extends Message {
+public interface ControlMessage extends Message {
 
 }

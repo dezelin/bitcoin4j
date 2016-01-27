@@ -24,7 +24,6 @@ package bitcoin4j.network.protocol.messages;
 
 import javax.smartcardio.CommandAPDU;
 
-import bitcoin4j.network.protocol.ControlMessage;
 import bitcoin4j.network.protocol.enums.RejectEnum;
 
 /**

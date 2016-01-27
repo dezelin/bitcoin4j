@@ -22,7 +22,6 @@
  */
 package bitcoin4j.network.protocol.messages;
 
-import bitcoin4j.network.protocol.DataMessage;
 import bitcoin4j.network.protocol.structs.BlockHeader;
 import bitcoin4j.network.protocol.structs.CompactInteger;
 import bitcoin4j.network.protocol.structs.RawTransaction;

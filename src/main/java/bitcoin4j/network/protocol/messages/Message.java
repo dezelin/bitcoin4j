@@ -17,8 +17,15 @@
  * THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package bitcoin4j.network.protocol;
+/**
+ * 
+ */
+package bitcoin4j.network.protocol.messages;
 
-public interface ControlMessage extends Message {
-
+/**
+ * @author dezelin
+ *
+ */
+public interface Message {
+	public String getCommandName();
 }
