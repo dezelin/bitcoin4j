@@ -17,7 +17,7 @@
  * THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package pools;
+package bitcoin4j.pools;
 
 import java.util.concurrent.ExecutorService;
 

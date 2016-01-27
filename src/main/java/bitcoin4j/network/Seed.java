@@ -17,53 +17,12 @@
  * THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package network;
+package bitcoin4j.network;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
-import java.util.concurrent.FutureTask;
 
-import pools.WorkPoolSingleton;
-
-public class DnsSeedSwarm implements Seed {
-
-	private List<String> seeds;
-
-	public DnsSeedSwarm(List<String> seeds) {
-		this.seeds = seeds;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see network.Seed#retrievePeers()
-	 */
-	@Override
-	public Future<List<Peer>> retrievePeers() {
-		FutureTask<List<Peer>> futurePeers = new FutureTask<List<Peer>>(() -> resolvePeers(seeds));
-		WorkPoolSingleton.getInstance().getExecutor().submit(futurePeers);
-		return futurePeers;
-	}
-
-	private static List<Peer> resolvePeers(List<String> seeds) {
-		List<Peer> peers = new ArrayList<Peer>();
-		seeds.forEach(host -> {
-			try {
-				InetAddress[] addresses = InetAddress.getAllByName(host);
-				for (InetAddress inetAddress : addresses) {
-					// TODO: For now use only testnet
-					peers.add(new BitcoinPeer(inetAddress, 18333));
-				}
-			} catch (UnknownHostException e) {
-				// TODO: Log error message
-			}
-		});
-
-		return peers;
-	}
-
+public interface Seed {
+	Future<List<Peer>> retrievePeers();
 }
+

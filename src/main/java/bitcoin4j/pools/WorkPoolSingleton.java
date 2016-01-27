@@ -17,12 +17,18 @@
  * THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package network;
+package bitcoin4j.pools;
 
-import java.util.List;
-import java.util.concurrent.Future;
+import java.util.concurrent.Executors;
 
-public interface Seed {
-	Future<List<Peer>> retrievePeers();
+public class WorkPoolSingleton {
+	private static WorkPool pool = null;
+	
+	public static WorkPool getInstance() {
+		if (pool == null) {
+			pool = new WorkPool(Executors.newCachedThreadPool());
+		}
+		
+		return pool;
+	}
 }
-

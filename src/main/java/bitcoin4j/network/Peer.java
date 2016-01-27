@@ -17,58 +17,15 @@
  * THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package network;
+package bitcoin4j.network;
 
 import java.net.InetAddress;
-import java.util.List;
-import java.util.concurrent.Future;
 
-public class BitcoinPeer implements Peer, Seed {
+public interface Peer {
+	public InetAddress getAddress();
+	public void setAddress(InetAddress address);
 	
-	private InetAddress address;
-	private int port;
-	
-	public BitcoinPeer(InetAddress address, int port) {
-		this.address = address;
-		this.port = port;
-	}
-
-	/* (non-Javadoc)
-	 * @see network.Peer#getAddress()
-	 */
-	@Override
-	public InetAddress getAddress() {
-		return address;
-	}
-
-	/* (non-Javadoc)
-	 * @see network.Peer#setAddress(java.net.InetAddress)
-	 */
-	@Override
-	public void setAddress(InetAddress address) {
-		this.address = address;
-	}
-
-	/* (non-Javadoc)
-	 * @see network.Peer#getPort()
-	 */
-	@Override
-	public int getPort() {
-		return port;
-	}
-
-	/* (non-Javadoc)
-	 * @see network.Peer#setPort(int)
-	 */
-	@Override
-	public void setPort(int port) {
-		this.port = port;
-	}
-
-	@Override
-	public Future<List<Peer>> retrievePeers() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public int getPort();
+	public void setPort(int port);
 }
 

@@ -17,15 +17,45 @@
  * THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package network;
+package bitcoin4j.network.test;
 
-import java.net.InetAddress;
+import static org.junit.Assert.*;
 
-public interface Peer {
-	public InetAddress getAddress();
-	public void setAddress(InetAddress address);
-	
-	public int getPort();
-	public void setPort(int port);
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.Future;
+
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import bitcoin4j.network.DnsSeedSwarm;
+import bitcoin4j.network.Peer;
+
+public class DnsSeed {
+
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+	}
+
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+	}
+
+	@Test
+	public final void testRetrievePeers() {
+		List<String> seeds = (List<String>) Arrays.asList("bitseed.xf2.org", "dnsseed.bluematt.me",
+				"seed.bitcoin.sipa.be", "dnsseed.bitcoin.dashjr.org", "seed.bitcoinstats.com");
+
+		List<Peer> peers = null;
+		try {
+			Future<List<Peer>> futurePeers = new DnsSeedSwarm(seeds).retrievePeers();
+			peers = futurePeers.get();
+		} catch (Exception ex) {
+			// TODO: Log error message
+		}
+		
+		assertNotNull(peers);
+	}
+
 }
-

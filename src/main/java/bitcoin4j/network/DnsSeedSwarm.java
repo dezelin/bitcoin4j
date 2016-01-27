@@ -17,44 +17,53 @@
  * THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package network.test;
+package bitcoin4j.network;
 
-import static org.junit.Assert.*;
-
-import java.util.Arrays;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import bitcoin4j.pools.WorkPoolSingleton;
 
-import network.Peer;
+public class DnsSeedSwarm implements Seed {
 
-public class DnsSeed {
+	private List<String> seeds;
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
+	public DnsSeedSwarm(List<String> seeds) {
+		this.seeds = seeds;
 	}
 
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see network.Seed#retrievePeers()
+	 */
+	@Override
+	public Future<List<Peer>> retrievePeers() {
+		FutureTask<List<Peer>> futurePeers = new FutureTask<List<Peer>>(() -> resolvePeers(seeds));
+		WorkPoolSingleton.getInstance().getExecutor().submit(futurePeers);
+		return futurePeers;
 	}
 
-	@Test
-	public final void testRetrievePeers() {
-		List<String> seeds = (List<String>) Arrays.asList("bitseed.xf2.org", "dnsseed.bluematt.me",
-				"seed.bitcoin.sipa.be", "dnsseed.bitcoin.dashjr.org", "seed.bitcoinstats.com");
+	private static List<Peer> resolvePeers(List<String> seeds) {
+		List<Peer> peers = new ArrayList<Peer>();
+		seeds.forEach(host -> {
+			try {
+				InetAddress[] addresses = InetAddress.getAllByName(host);
+				for (InetAddress inetAddress : addresses) {
+					// TODO: For now use only testnet
+					peers.add(new BitcoinPeer(inetAddress, 18333));
+				}
+			} catch (UnknownHostException e) {
+				// TODO: Log error message
+			}
+		});
 
-		List<Peer> peers = null;
-		try {
-			Future<List<Peer>> futurePeers = new network.DnsSeedSwarm(seeds).retrievePeers();
-			peers = futurePeers.get();
-		} catch (Exception ex) {
-			// TODO: Log error message
-		}
-		
-		assertNotNull(peers);
+		return peers;
 	}
 
 }

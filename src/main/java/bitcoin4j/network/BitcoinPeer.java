@@ -17,18 +17,58 @@
  * THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package pools;
+package bitcoin4j.network;
 
-import java.util.concurrent.Executors;
+import java.net.InetAddress;
+import java.util.List;
+import java.util.concurrent.Future;
 
-public class WorkPoolSingleton {
-	private static WorkPool pool = null;
+public class BitcoinPeer implements Peer, Seed {
 	
-	public static WorkPool getInstance() {
-		if (pool == null) {
-			pool = new WorkPool(Executors.newCachedThreadPool());
-		}
-		
-		return pool;
+	private InetAddress address;
+	private int port;
+	
+	public BitcoinPeer(InetAddress address, int port) {
+		this.address = address;
+		this.port = port;
+	}
+
+	/* (non-Javadoc)
+	 * @see network.Peer#getAddress()
+	 */
+	@Override
+	public InetAddress getAddress() {
+		return address;
+	}
+
+	/* (non-Javadoc)
+	 * @see network.Peer#setAddress(java.net.InetAddress)
+	 */
+	@Override
+	public void setAddress(InetAddress address) {
+		this.address = address;
+	}
+
+	/* (non-Javadoc)
+	 * @see network.Peer#getPort()
+	 */
+	@Override
+	public int getPort() {
+		return port;
+	}
+
+	/* (non-Javadoc)
+	 * @see network.Peer#setPort(int)
+	 */
+	@Override
+	public void setPort(int port) {
+		this.port = port;
+	}
+
+	@Override
+	public Future<List<Peer>> retrievePeers() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
+
