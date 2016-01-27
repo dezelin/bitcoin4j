@@ -28,7 +28,7 @@ package bitcoin4j.network.protocol;
  */
 public class GetBlocksMessage implements DataMessage {
 
-	private static MessageHeader header = new BitcoinMessageHeader("getblocks");
+	private static String commandName = "getblocks";
 
 	private int version;
 	private CompactInteger hashCount;
@@ -41,16 +41,6 @@ public class GetBlocksMessage implements DataMessage {
 		this.setHashCount(hashCount);
 		this.setBlockHeaderHashes(blockHeaderHashes);
 		this.setStopHash(stopHash);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see bitcoin4j.network.protocol.Message#getHeader()
-	 */
-	@Override
-	public MessageHeader getHeader() {
-		return header;
 	}
 
 	/**
@@ -111,6 +101,11 @@ public class GetBlocksMessage implements DataMessage {
 	 */
 	public void setStopHash(byte[] stopHash) {
 		this.stopHash = stopHash;
+	}
+
+	@Override
+	public String getCommandName() {
+		return commandName;
 	}
 
 }

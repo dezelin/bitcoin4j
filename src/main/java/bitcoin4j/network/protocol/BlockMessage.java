@@ -45,7 +45,7 @@ package bitcoin4j.network.protocol;
  */
 public class BlockMessage implements DataMessage {
 
-	private static MessageHeader header = new BitcoinMessageHeader("block");
+	private static String commandName = "block";
 	private BlockHeader blockHeader;
 	private CompactInteger txnCount;
 	private RawTransaction[] txns;
@@ -55,11 +55,6 @@ public class BlockMessage implements DataMessage {
 		this.setBlockHeader(header);
 		this.setTxnCount(txnCount);
 		this.setTxns(txns);
-	}
-
-	@Override
-	public MessageHeader getHeader() {
-		return header;
 	}
 
 	/**
@@ -105,5 +100,10 @@ public class BlockMessage implements DataMessage {
 	 */
 	public void setTxns(RawTransaction[] txns) {
 		this.txns = txns;
+	}
+
+	@Override
+	public String getCommandName() {
+		return commandName;
 	}
 }
