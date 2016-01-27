@@ -29,18 +29,18 @@ import java.util.concurrent.FutureTask;
 
 import pools.WorkPoolSingleton;
 
-public class DnsSeedsBootstrapper implements Bootstrapper {
+public class DnsSeed implements Seed {
 
 	private List<String> seeds;
 
-	public DnsSeedsBootstrapper(List<String> seeds) {
+	public DnsSeed(List<String> seeds) {
 		this.seeds = seeds;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see network.Bootstrapper#retrievePeers()
+	 * @see network.Seed#retrievePeers()
 	 */
 	@Override
 	public Future<List<Peer>> retrievePeers() {

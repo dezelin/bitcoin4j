@@ -22,7 +22,7 @@ package network;
 import java.util.List;
 import java.util.concurrent.Future;
 
-public interface Bootstrapper {
+public interface Seed {
 	Future<List<Peer>> retrievePeers();
 }
 

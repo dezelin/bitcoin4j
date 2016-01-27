@@ -48,7 +48,7 @@ public class DnsSeedsBootstrapper {
 
 		List<Peer> peers = null;
 		try {
-			Future<List<Peer>> futurePeers = new network.DnsSeedsBootstrapper(seeds).retrievePeers();
+			Future<List<Peer>> futurePeers = new network.DnsSeed(seeds).retrievePeers();
 			peers = futurePeers.get();
 		} catch (Exception ex) {
 			// TODO: Log error message

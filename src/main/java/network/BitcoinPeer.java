@@ -20,8 +20,10 @@
 package network;
 
 import java.net.InetAddress;
+import java.util.List;
+import java.util.concurrent.Future;
 
-public class BitcoinPeer implements Peer {
+public class BitcoinPeer implements Peer, Seed {
 	
 	private InetAddress address;
 	private int port;
@@ -61,6 +63,12 @@ public class BitcoinPeer implements Peer {
 	@Override
 	public void setPort(int port) {
 		this.port = port;
+	}
+
+	@Override
+	public Future<List<Peer>> retrievePeers() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
 
