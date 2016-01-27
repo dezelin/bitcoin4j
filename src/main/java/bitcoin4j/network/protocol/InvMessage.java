@@ -26,7 +26,7 @@ package bitcoin4j.network.protocol;
  * @author dezelin
  *
  */
-public class InvMessage implements Message {
+public class InvMessage implements DataMessage {
 
 	private static final String commandName = "inv";
 
