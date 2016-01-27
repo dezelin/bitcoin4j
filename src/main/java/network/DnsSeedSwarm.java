@@ -29,11 +29,11 @@ import java.util.concurrent.FutureTask;
 
 import pools.WorkPoolSingleton;
 
-public class DnsSeed implements Seed {
+public class DnsSeedSwarm implements Seed {
 
 	private List<String> seeds;
 
-	public DnsSeed(List<String> seeds) {
+	public DnsSeedSwarm(List<String> seeds) {
 		this.seeds = seeds;
 	}
 

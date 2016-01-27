@@ -48,7 +48,7 @@ public class DnsSeed {
 
 		List<Peer> peers = null;
 		try {
-			Future<List<Peer>> futurePeers = new network.DnsSeed(seeds).retrievePeers();
+			Future<List<Peer>> futurePeers = new network.DnsSeedSwarm(seeds).retrievePeers();
 			peers = futurePeers.get();
 		} catch (Exception ex) {
 			// TODO: Log error message
