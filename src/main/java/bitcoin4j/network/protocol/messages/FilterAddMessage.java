@@ -26,7 +26,7 @@ package bitcoin4j.network.protocol.messages;
  * @author dezelin
  *
  */
-public class FilterAdd implements ControlMessage {
+public class FilterAddMessage implements ControlMessage {
 	
 	private static final String commandName = "filteradd";
 
@@ -35,7 +35,7 @@ public class FilterAdd implements ControlMessage {
 	/**
 	 * 
 	 */
-	public FilterAdd(byte[] element) {
+	public FilterAddMessage(byte[] element) {
 		this.setElement(element);
 	}
 

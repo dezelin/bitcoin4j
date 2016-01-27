@@ -32,7 +32,7 @@ import org.junit.Test;
 import bitcoin4j.network.DnsSeedSwarm;
 import bitcoin4j.network.Peer;
 
-public class DnsSeed {
+public class DnsSeedTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
