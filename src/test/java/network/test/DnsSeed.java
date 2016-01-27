@@ -31,7 +31,7 @@ import org.junit.Test;
 
 import network.Peer;
 
-public class DnsSeedsBootstrapper {
+public class DnsSeed {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
