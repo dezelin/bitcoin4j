@@ -25,4 +25,3 @@ import java.util.concurrent.Future;
 public interface Seed {
 	Future<List<Peer>> retrievePeers();
 }
-

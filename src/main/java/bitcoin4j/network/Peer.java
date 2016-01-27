@@ -23,9 +23,10 @@ import java.net.InetAddress;
 
 public interface Peer {
 	public InetAddress getAddress();
+
 	public void setAddress(InetAddress address);
-	
+
 	public int getPort();
+
 	public void setPort(int port);
 }
-

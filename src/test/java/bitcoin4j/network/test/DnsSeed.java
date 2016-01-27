@@ -44,17 +44,19 @@ public class DnsSeed {
 
 	@Test
 	public final void testRetrievePeers() {
-		List<String> seeds = (List<String>) Arrays.asList("bitseed.xf2.org", "dnsseed.bluematt.me",
-				"seed.bitcoin.sipa.be", "dnsseed.bitcoin.dashjr.org", "seed.bitcoinstats.com");
+		List<String> seeds = (List<String>) Arrays.asList("bitseed.xf2.org",
+				"dnsseed.bluematt.me", "seed.bitcoin.sipa.be",
+				"dnsseed.bitcoin.dashjr.org", "seed.bitcoinstats.com");
 
 		List<Peer> peers = null;
 		try {
-			Future<List<Peer>> futurePeers = new DnsSeedSwarm(seeds).retrievePeers();
+			Future<List<Peer>> futurePeers = new DnsSeedSwarm(seeds)
+					.retrievePeers();
 			peers = futurePeers.get();
 		} catch (Exception ex) {
 			// TODO: Log error message
 		}
-		
+
 		assertNotNull(peers);
 	}
 

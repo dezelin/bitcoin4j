@@ -29,18 +29,21 @@ import java.nio.ByteBuffer;
  *
  */
 public class BitcoinMessageHeader implements MessageHeader {
-	
+
 	private String startString;
 	private String commandName;
 	private int payloadSize = 0;
 	private String checksum;
-	
+
 	public BitcoinMessageHeader(String commandName) {
 		this.setCommandName(commandName);
-		this.setStartString(ByteBuffer.allocate(4).putInt(TestnetMagic).toString());
+		this.setStartString(
+				ByteBuffer.allocate(4).putInt(TestnetMagic).toString());
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see bitcoin4j.network.protocol.MessageHeader#getStartString()
 	 */
 	@Override
@@ -48,15 +51,20 @@ public class BitcoinMessageHeader implements MessageHeader {
 		return startString;
 	}
 
-	/* (non-Javadoc)
-	 * @see bitcoin4j.network.protocol.MessageHeader#setStartString(java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * bitcoin4j.network.protocol.MessageHeader#setStartString(java.lang.String)
 	 */
 	@Override
 	public void setStartString(String startString) {
 		this.startString = startString;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see bitcoin4j.network.protocol.MessageHeader#getCommandName()
 	 */
 	@Override
@@ -64,15 +72,20 @@ public class BitcoinMessageHeader implements MessageHeader {
 		return commandName;
 	}
 
-	/* (non-Javadoc)
-	 * @see bitcoin4j.network.protocol.MessageHeader#setCommandName(java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * bitcoin4j.network.protocol.MessageHeader#setCommandName(java.lang.String)
 	 */
 	@Override
 	public void setCommandName(String commandName) {
 		this.commandName = commandName;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see bitcoin4j.network.protocol.MessageHeader#getPayloadSize()
 	 */
 	@Override
@@ -80,7 +93,9 @@ public class BitcoinMessageHeader implements MessageHeader {
 		return payloadSize;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see bitcoin4j.network.protocol.MessageHeader#setPayloadSize(int)
 	 */
 	@Override
@@ -88,7 +103,9 @@ public class BitcoinMessageHeader implements MessageHeader {
 		this.payloadSize = payloadSize;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see bitcoin4j.network.protocol.MessageHeader#getChecksum()
 	 */
 	@Override
@@ -96,8 +113,11 @@ public class BitcoinMessageHeader implements MessageHeader {
 		return checksum;
 	}
 
-	/* (non-Javadoc)
-	 * @see bitcoin4j.network.protocol.MessageHeader#setChecksum(java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * bitcoin4j.network.protocol.MessageHeader#setChecksum(java.lang.String)
 	 */
 	@Override
 	public void setChecksum(String checksum) {

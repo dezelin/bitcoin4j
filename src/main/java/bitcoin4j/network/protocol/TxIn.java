@@ -32,7 +32,8 @@ public class TxIn {
 	private byte[] signatureScript;
 	private int sequence;
 
-	public TxIn(Outpoint outpoint, CompactInteger scriptBytes, byte[] signatureScript, int sequence) {
+	public TxIn(Outpoint outpoint, CompactInteger scriptBytes,
+			byte[] signatureScript, int sequence) {
 		this.setOutpoint(outpoint);
 		this.setScriptBytes(scriptBytes);
 		this.setSignatureScript(signatureScript);

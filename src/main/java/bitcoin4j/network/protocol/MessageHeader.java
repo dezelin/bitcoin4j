@@ -25,13 +25,13 @@ package bitcoin4j.network.protocol;
 /**
  * Message Header
  * <p>
- * All messages in the network protocol use the same container format, which 
+ * All messages in the network protocol use the same container format, which
  * provides a required multi-field message header and an optional payload.
  */
 public interface MessageHeader {
 	/* Mainnet magic string */
 	public final int MainnetMagic = 0xf9beb4d9;
-	
+
 	/* Testnet magic string */
 	public final int TestnetMagic = 0x0b110907;
 
@@ -39,14 +39,18 @@ public interface MessageHeader {
 	public final int RegtestMagic = 0xfabfb5da;
 
 	public String getStartString();
+
 	public void setStartString(String startString);
-	
+
 	public String getCommandName();
+
 	public void setCommandName(String commandName);
-	
+
 	public int getPayloadSize();
+
 	public void setPayloadSize(int payloadSize);
-	
+
 	public String getChecksum();
+
 	public void setChecksum(String checksum);
 }

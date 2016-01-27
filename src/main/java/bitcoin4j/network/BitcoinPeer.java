@@ -24,16 +24,18 @@ import java.util.List;
 import java.util.concurrent.Future;
 
 public class BitcoinPeer implements Peer, Seed {
-	
+
 	private InetAddress address;
 	private int port;
-	
+
 	public BitcoinPeer(InetAddress address, int port) {
 		this.address = address;
 		this.port = port;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see network.Peer#getAddress()
 	 */
 	@Override
@@ -41,7 +43,9 @@ public class BitcoinPeer implements Peer, Seed {
 		return address;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see network.Peer#setAddress(java.net.InetAddress)
 	 */
 	@Override
@@ -49,7 +53,9 @@ public class BitcoinPeer implements Peer, Seed {
 		this.address = address;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see network.Peer#getPort()
 	 */
 	@Override
@@ -57,7 +63,9 @@ public class BitcoinPeer implements Peer, Seed {
 		return port;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see network.Peer#setPort(int)
 	 */
 	@Override
@@ -71,4 +79,3 @@ public class BitcoinPeer implements Peer, Seed {
 		return null;
 	}
 }
-

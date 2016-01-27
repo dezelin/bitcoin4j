@@ -27,10 +27,9 @@ package bitcoin4j.network.protocol;
  *
  */
 public interface Protocol {
-	
+
 	/*
 	 * Data messages
 	 */
-	
-	
+
 }

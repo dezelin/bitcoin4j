@@ -50,7 +50,8 @@ public class BlockMessage implements DataMessage {
 	private CompactInteger txnCount;
 	private RawTransaction[] txns;
 
-	public BlockMessage(BlockHeader header, CompactInteger txnCount, RawTransaction[] txns) {
+	public BlockMessage(BlockHeader header, CompactInteger txnCount,
+			RawTransaction[] txns) {
 		this.setBlockHeader(header);
 		this.setTxnCount(txnCount);
 		this.setTxns(txns);

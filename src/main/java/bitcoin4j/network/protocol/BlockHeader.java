@@ -34,7 +34,8 @@ public class BlockHeader {
 	private int nBits;
 	private int nonce;
 
-	public BlockHeader(int version, byte[] prevBlockHash, byte[] merkleRootHash, int time, int nBits, int nonce) {
+	public BlockHeader(int version, byte[] prevBlockHash, byte[] merkleRootHash,
+			int time, int nBits, int nonce) {
 		this.setVersion(version);
 		this.setPrevBlockHeaderHash(prevBlockHash);
 		this.setMerkleRootHash(merkleRootHash);

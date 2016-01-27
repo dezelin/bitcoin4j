@@ -31,8 +31,8 @@ import java.security.InvalidParameterException;
 public class Outpoint {
 	private byte[] hash;
 	private int index;
-	
-	public Outpoint(byte[] hash, int index) {		
+
+	public Outpoint(byte[] hash, int index) {
 		this.setHash(hash);
 		this.setIndex(index);
 	}
@@ -45,11 +45,13 @@ public class Outpoint {
 	}
 
 	/**
-	 * @param hash the hash to set
+	 * @param hash
+	 *            the hash to set
 	 */
 	public void setHash(byte[] hash) {
 		if (hash.length != 32) {
-			throw new InvalidParameterException("hash must be 32 bytes in length");
+			throw new InvalidParameterException(
+					"hash must be 32 bytes in length");
 		}
 
 		this.hash = hash;
@@ -63,7 +65,8 @@ public class Outpoint {
 	}
 
 	/**
-	 * @param index the index to set
+	 * @param index
+	 *            the index to set
 	 */
 	public void setIndex(int index) {
 		this.index = index;

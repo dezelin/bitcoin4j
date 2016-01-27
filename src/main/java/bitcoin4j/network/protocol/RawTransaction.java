@@ -34,8 +34,8 @@ public class RawTransaction {
 	private TxOut[] txOut;
 	private int lockTime;
 
-	public RawTransaction(int version, CompactInteger txInCount, TxIn[] txIn, CompactInteger txOutCount, TxOut[] txOut,
-			int lockTime) {
+	public RawTransaction(int version, CompactInteger txInCount, TxIn[] txIn,
+			CompactInteger txOutCount, TxOut[] txOut, int lockTime) {
 		this.setVersion(version);
 		this.setTxInCount(txInCount);
 		this.setTxIn(txIn);

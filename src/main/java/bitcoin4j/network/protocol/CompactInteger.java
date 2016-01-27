@@ -30,7 +30,7 @@ import java.security.InvalidParameterException;
  */
 public class CompactInteger {
 	private long value;
-	
+
 	public CompactInteger(long value) {
 		this.setValue(value);
 	}
@@ -43,7 +43,8 @@ public class CompactInteger {
 	}
 
 	/**
-	 * @param value the value to set
+	 * @param value
+	 *            the value to set
 	 */
 	public void setValue(long value) {
 		this.value = value;
@@ -61,7 +62,7 @@ public class CompactInteger {
 			compact = new byte[3];
 			compact[0] = (byte) 0xfd;
 			compact[1] = (byte) (value & 0xff);
-			compact[2] = (byte) ((value >> 8) & 0xff);		
+			compact[2] = (byte) ((value >> 8) & 0xff);
 		} else if (value <= 0xffffffff) {
 			compact = new byte[5];
 			compact[0] = (byte) 0xfe;
@@ -75,61 +76,56 @@ public class CompactInteger {
 			compact[1] = (byte) (value & 0xff);
 			compact[2] = (byte) ((value >> 8) & 0xff);
 			compact[3] = (byte) ((value >> 16) & 0xff);
-			compact[4] = (byte) ((value >> 24) & 0xff);			
-			compact[5] = (byte) ((value >> 32) & 0xff);			
-			compact[6] = (byte) ((value >> 40) & 0xff);			
-			compact[7] = (byte) ((value >> 48) & 0xff);			
-			compact[8] = (byte) ((value >> 56) & 0xff);			
+			compact[4] = (byte) ((value >> 24) & 0xff);
+			compact[5] = (byte) ((value >> 32) & 0xff);
+			compact[6] = (byte) ((value >> 40) & 0xff);
+			compact[7] = (byte) ((value >> 48) & 0xff);
+			compact[8] = (byte) ((value >> 56) & 0xff);
 		}
-		
+
 		return compact;
 	}
 
 	/**
-	 * @param value the value to set in little-endian order
+	 * @param value
+	 *            the value to set in little-endian order
 	 */
 	public void setCompactValue(byte[] value) throws InvalidParameterException {
-		switch(value.length) {
-			case 1: {
-				this.value = value[0];
-				break;
+		switch (value.length) {
+		case 1: {
+			this.value = value[0];
+			break;
+		}
+		case 3: {
+			if (value[0] != 0xfd) {
+				throw new InvalidParameterException("Missing prefix byte 0xfd");
 			}
-			case 3: {
-				if (value[0] != 0xfd) {
-					throw new InvalidParameterException("Missing prefix byte 0xfd");
-				}
-				
-				this.value = value[2] << 8 | value[1];
-				break;
+
+			this.value = value[2] << 8 | value[1];
+			break;
+		}
+		case 5: {
+			if (value[0] != 0xfe) {
+				throw new InvalidParameterException("Missing prefix byte 0xfe");
 			}
-			case 5: {
-				if (value[0] != 0xfe) {
-					throw new InvalidParameterException("Missing prefix byte 0xfe");
-				}
-				
-				this.value = value[4] << 24 
-						| value[3] << 16 
-						| value[2] << 8 
-						| value[1]; 
-				break;
+
+			this.value = value[4] << 24 | value[3] << 16 | value[2] << 8
+					| value[1];
+			break;
+		}
+		case 9: {
+			if (value[0] != 0xff) {
+				throw new InvalidParameterException("Missing prefix byte 0xff");
 			}
-			case 9: {
-				if (value[0] != 0xff) {
-					throw new InvalidParameterException("Missing prefix byte 0xff");
-				}
-				
-				this.value = value[7] << 56 
-						| value[6] << 48 
-						| value[5] << 40 
-						| value[4] << 32 
-						| value[3] << 16 
-						| value[2] << 8 
-						| value[1];
-				break;
-			}
-			default: {
-				throw new InvalidParameterException("Invalid compact integer");
-			}
+
+			this.value = value[7] << 56 | value[6] << 48 | value[5] << 40
+					| value[4] << 32 | value[3] << 16 | value[2] << 8
+					| value[1];
+			break;
+		}
+		default: {
+			throw new InvalidParameterException("Invalid compact integer");
+		}
 		}
 	}
 

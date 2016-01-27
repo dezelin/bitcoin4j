@@ -44,7 +44,8 @@ public class DnsSeedSwarm implements Seed {
 	 */
 	@Override
 	public Future<List<Peer>> retrievePeers() {
-		FutureTask<List<Peer>> futurePeers = new FutureTask<List<Peer>>(() -> resolvePeers(seeds));
+		FutureTask<List<Peer>> futurePeers = new FutureTask<List<Peer>>(
+				() -> resolvePeers(seeds));
 		WorkPoolSingleton.getInstance().getExecutor().submit(futurePeers);
 		return futurePeers;
 	}

@@ -24,4 +24,3 @@ import java.util.concurrent.ExecutorService;
 public interface ExecutorPool {
 	ExecutorService getExecutor();
 }
-

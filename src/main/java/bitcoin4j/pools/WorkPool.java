@@ -22,14 +22,16 @@ package bitcoin4j.pools;
 import java.util.concurrent.ExecutorService;
 
 public class WorkPool implements ExecutorPool {
-	
+
 	private final ExecutorService pool;
-	
+
 	public WorkPool(ExecutorService pool) {
 		this.pool = pool;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see pools.ExecutorPool#getExecutor()
 	 */
 	@Override
@@ -37,4 +39,3 @@ public class WorkPool implements ExecutorPool {
 		return pool;
 	}
 }
-
