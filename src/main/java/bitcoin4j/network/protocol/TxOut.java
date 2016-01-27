@@ -1,0 +1,84 @@
+/*
+ *
+ * Copyright (c) 2016 Aleksandar Dezelin
+ *
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify,
+ * merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+ * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO
+ * EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
+ * THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+/**
+ * 
+ */
+package bitcoin4j.network.protocol;
+
+/**
+ * @author dezelin
+ *
+ */
+public class TxOut {
+	private long value;
+	private CompactInteger pkScriptBytes;
+	private byte[] pkScript;
+
+	public TxOut(long value, CompactInteger pkScriptBytes, byte[] pkScript) {
+		this.setValue(value);
+		this.setPkScriptBytes(pkScriptBytes);
+		this.setPkScript(pkScript);
+	}
+
+	/**
+	 * @return the value
+	 */
+	public long getValue() {
+		return value;
+	}
+
+	/**
+	 * @param value
+	 *            the value to set
+	 */
+	public void setValue(long value) {
+		this.value = value;
+	}
+
+	/**
+	 * @return the pkScriptBytes
+	 */
+	public CompactInteger getPkScriptBytes() {
+		return pkScriptBytes;
+	}
+
+	/**
+	 * @param pkScriptBytes
+	 *            the pkScriptBytes to set
+	 */
+	public void setPkScriptBytes(CompactInteger pkScriptBytes) {
+		this.pkScriptBytes = pkScriptBytes;
+	}
+
+	/**
+	 * @return the pkScript
+	 */
+	public byte[] getPkScript() {
+		return pkScript;
+	}
+
+	/**
+	 * @param pkScript
+	 *            the pkScript to set
+	 */
+	public void setPkScript(byte[] pkScript) {
+		this.pkScript = pkScript;
+	}
+}
