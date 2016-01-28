@@ -71,7 +71,7 @@ public class Inventory {
 	 */
 	public void setHash(byte[] hash) {
 		if (hash == null || hash.length != 32) {
-			throw new InvalidParameterException();
+			throw new IllegalArgumentException();
 		}
 
 		this.hash = hash;
