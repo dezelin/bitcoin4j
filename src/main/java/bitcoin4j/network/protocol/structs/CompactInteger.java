@@ -53,7 +53,7 @@ public class CompactInteger {
 	/**
 	 * @return the value as compact byte[]
 	 */
-	public byte[] getCompactValue() {
+	public byte[] toByteArray() {
 		byte[] compact;
 		if (value <= 252) {
 			compact = new byte[1];
@@ -90,7 +90,7 @@ public class CompactInteger {
 	 * @param value
 	 *            the value to set in little-endian order
 	 */
-	public void setCompactValue(byte[] value) throws InvalidParameterException {
+	public void fromByteArray(byte[] value) throws InvalidParameterException {
 		switch (value.length) {
 		case 1: {
 			this.value = value[0];

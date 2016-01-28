@@ -44,7 +44,7 @@ public class VersionMessage implements ControlMessage {
 	private long nonce;
 	private String userAgent;
 	private int startHeight;
-	private boolean realy;
+	private boolean relay;
 
 	/**
 	 * 
@@ -177,11 +177,11 @@ public class VersionMessage implements ControlMessage {
 	}
 
 	public boolean isRelay() {
-		return realy;
+		return relay;
 	}
 
-	public void setRelay(boolean realy) {
-		this.realy = realy;
+	public void setRelay(boolean relay) {
+		this.relay = relay;
 	}
 
 }
