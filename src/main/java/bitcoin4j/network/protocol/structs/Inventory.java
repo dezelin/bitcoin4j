@@ -22,8 +22,6 @@
  */
 package bitcoin4j.network.protocol.structs;
 
-import java.security.InvalidParameterException;
-
 import bitcoin4j.network.protocol.enums.InventoryTypeEnum;
 
 /**

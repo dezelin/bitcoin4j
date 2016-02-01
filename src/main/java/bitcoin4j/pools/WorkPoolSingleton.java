@@ -23,8 +23,12 @@ import java.util.concurrent.Executors;
 
 public class WorkPoolSingleton {
 	private static WorkPool pool = null;
+	
+	private WorkPoolSingleton() {
+		
+	}
 
-	public static WorkPool getInstance() {
+	public static synchronized WorkPool getInstance() {
 		if (pool == null) {
 			pool = new WorkPool(Executors.newCachedThreadPool());
 		}

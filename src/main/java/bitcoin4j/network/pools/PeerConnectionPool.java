@@ -17,68 +17,71 @@
  * THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package bitcoin4j.network;
+/**
+ * 
+ */
+package bitcoin4j.network.pools;
 
-import java.net.InetAddress;
-import java.util.List;
-import com.sun.xml.internal.ws.util.CompletedFuture;
+import java.util.HashSet;
+import java.util.Set;
 
-import bitcoin4j.network.swarm.Peer;
-import bitcoin4j.network.swarm.Seed;
+/**
+ * @author dezelin
+ *
+ */
+public class PeerConnectionPool implements ConnectionPool {
 
-public class BitcoinPeer implements Peer, Seed {
+	private final Set<Connection> taken = new HashSet<>();
+	private final Set<Connection> pool = new HashSet<>();
 
-	private InetAddress address;
-	private int port;
-
-	public BitcoinPeer(InetAddress address, int port) {
-		this.address = address;
-		this.port = port;
+	/**
+	 * 
+	 */
+	public PeerConnectionPool() {
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see network.Peer#getAddress()
+	 * @see bitcoin4j.network.pools.ConnectionPool#size()
 	 */
 	@Override
-	public InetAddress getAddress() {
-		return address;
+	public int size() {
+		return pool.size();
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see network.Peer#setAddress(java.net.InetAddress)
+	 * @see bitcoin4j.network.pools.ConnectionPool#hasAvailable()
 	 */
 	@Override
-	public void setAddress(InetAddress address) {
-		this.address = address;
+	public boolean hasAvailable() {
+		return false;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see network.Peer#getPort()
+	 * @see bitcoin4j.network.pools.ConnectionPool#takeFromPool()
 	 */
 	@Override
-	public int getPort() {
-		return port;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see network.Peer#setPort(int)
-	 */
-	@Override
-	public void setPort(int port) {
-		this.port = port;
-	}
-
-	@Override
-	public CompletedFuture<List<Peer>> retrievePeers() {
+	public Connection takeFromPool() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * bitcoin4j.network.pools.ConnectionPool#returnToPool(bitcoin4j.network.
+	 * pools.Connection)
+	 */
+	@Override
+	public void returnToPool(Connection connection) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

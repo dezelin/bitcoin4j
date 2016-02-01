@@ -22,6 +22,8 @@
  */
 package bitcoin4j.network.protocol.messages;
 
+import java.util.Arrays;
+
 /**
  * @author dezelin
  *
@@ -40,6 +42,11 @@ public class AlertMessage implements ControlMessage {
 		this.setAlert(alert);
 		this.setSignature(signature);
 	}
+	
+	public AlertMessage(AlertMessage message) {
+		this.setAlert(message.alert);
+		this.setSignature(message.signature);
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -56,11 +63,11 @@ public class AlertMessage implements ControlMessage {
 	}
 
 	public byte[] getAlert() {
-		return alert;
+		return Arrays.copyOf(alert, alert.length);
 	}
 
 	public void setAlert(byte[] alert) {
-		this.alert = alert;
+		this.alert = Arrays.copyOf(alert, alert.length);
 	}
 
 	public int getSignatureBytes() {
@@ -68,11 +75,11 @@ public class AlertMessage implements ControlMessage {
 	}
 
 	public byte[] getSignature() {
-		return signature;
+		return Arrays.copyOf(signature, signature.length);
 	}
 
 	public void setSignature(byte[] signature) {
-		this.signature = signature;
+		this.signature = Arrays.copyOf(signature, signature.length);
 	}
 
 }

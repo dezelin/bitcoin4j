@@ -30,7 +30,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import bitcoin4j.network.DnsSeedSwarm;
-import bitcoin4j.network.Peer;
+import bitcoin4j.network.swarm.Peer;
 
 public class DnsSeedTest {
 

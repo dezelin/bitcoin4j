@@ -23,17 +23,18 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Future;
-import java.util.concurrent.FutureTask;
-
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import bitcoin4j.network.swarm.Peer;
+import bitcoin4j.network.swarm.Seed;
 import bitcoin4j.pools.WorkPoolSingleton;
 
 public class DnsSeedSwarm implements Seed {
 
-	private List<String> seeds;
+	private final List<String> seeds;
 
 	public DnsSeedSwarm(List<String> seeds) {
-		this.seeds = seeds;
+		this.seeds = new ArrayList<>(seeds);
 	}
 
 	/*
@@ -42,10 +43,9 @@ public class DnsSeedSwarm implements Seed {
 	 * @see network.Seed#retrievePeers()
 	 */
 	@Override
-	public Future<List<Peer>> retrievePeers() {
-		FutureTask<List<Peer>> futurePeers = new FutureTask<List<Peer>>(
-				() -> resolvePeers(seeds));
-		WorkPoolSingleton.getInstance().getExecutor().submit(futurePeers);
+	public CompletableFuture<List<Peer>> retrievePeers() {
+		ExecutorService executor = WorkPoolSingleton.getInstance().getExecutor();
+		CompletableFuture<List<Peer>> futurePeers = CompletableFuture.supplyAsync(() -> resolvePeers(seeds), executor);
 		return futurePeers;
 	}
 

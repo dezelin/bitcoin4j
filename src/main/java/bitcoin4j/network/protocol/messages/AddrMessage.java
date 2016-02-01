@@ -22,6 +22,9 @@
  */
 package bitcoin4j.network.protocol.messages;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import bitcoin4j.network.protocol.structs.IPAddress;
 
 /**
@@ -32,13 +35,17 @@ public class AddrMessage implements ControlMessage {
 
 	private static final String commandName = "addr";
 
-	private IPAddress[] addresses;
+	private ArrayList<IPAddress> addresses;
 
 	/**
 	 * 
 	 */
-	public AddrMessage(IPAddress[] addresses) {
+	public AddrMessage(ArrayList<IPAddress> addresses) {
 		this.setAddresses(addresses);
+	}
+	
+	public AddrMessage(AddrMessage message) {
+		this.setAddresses(message.addresses);
 	}
 
 	/*
@@ -55,22 +62,22 @@ public class AddrMessage implements ControlMessage {
 	 * @return the addrCount
 	 */
 	public int getAddrCount() {
-		return addresses.length;
+		return addresses.size();
 	}
 
 	/**
 	 * @return the addresses
 	 */
-	public IPAddress[] getAddresses() {
-		return addresses;
+	public ArrayList<IPAddress> getAddresses() {
+		return new ArrayList<IPAddress>(addresses);
 	}
 
 	/**
 	 * @param addresses
 	 *            the addresses to set
 	 */
-	public void setAddresses(IPAddress[] addresses) {
-		this.addresses = addresses;
+	public void setAddresses(ArrayList<IPAddress> addresses) {
+		this.addresses = new ArrayList<IPAddress>(addresses);
 	}
 
 }

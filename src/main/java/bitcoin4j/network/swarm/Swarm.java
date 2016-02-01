@@ -17,11 +17,15 @@
  * THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package bitcoin4j.network;
+/**
+ * 
+ */
+package bitcoin4j.network.swarm;
 
-import java.util.List;
-import java.util.concurrent.Future;
+/**
+ * @author dezelin
+ *
+ */
+public interface Swarm {
 
-public interface Seed {
-	Future<List<Peer>> retrievePeers();
 }

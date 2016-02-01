@@ -22,6 +22,10 @@
  */
 package bitcoin4j.network.protocol.messages;
 
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+
+import bitcoin4j.network.protocol.misc.MessageUtils;
 import bitcoin4j.network.protocol.structs.BlockHeader;
 import bitcoin4j.network.protocol.structs.RawTransaction;
 
@@ -49,20 +53,25 @@ import bitcoin4j.network.protocol.structs.RawTransaction;
 public class BlockMessage implements DataMessage {
 
 	private static final String commandName = "block";
-	
-	private BlockHeader blockHeader;
-	private RawTransaction[] txns;
 
-	public BlockMessage(BlockHeader header, RawTransaction[] txns) {
+	private BlockHeader blockHeader;
+	private ArrayList<RawTransaction> txns;
+
+	public BlockMessage(BlockHeader header, ArrayList<RawTransaction> txns) {
 		this.setBlockHeader(header);
 		this.setTxns(txns);
+	}
+
+	public BlockMessage(BlockMessage message) {
+		this.setBlockHeader(message.blockHeader);
+		this.setTxns(message.txns);
 	}
 
 	/**
 	 * @return the blockHeader
 	 */
 	public BlockHeader getBlockHeader() {
-		return blockHeader;
+		return new BlockHeader(blockHeader);
 	}
 
 	/**
@@ -70,29 +79,34 @@ public class BlockMessage implements DataMessage {
 	 *            the blockHeader to set
 	 */
 	public void setBlockHeader(BlockHeader blockHeader) {
-		this.blockHeader = blockHeader;
+		this.blockHeader = new BlockHeader(blockHeader);
 	}
 
 	/**
 	 * @return the txnCount
 	 */
 	public int getTxnCount() {
-		return txns.length;
+		return txns.size();
 	}
 
 	/**
 	 * @return the txns
+	 * @throws InstantiationException
+	 * @throws Exception
 	 */
-	public RawTransaction[] getTxns() {
-		return txns;
+	public ArrayList<RawTransaction> getTxns() {
+		ArrayList<RawTransaction> clone = txns.stream().map(tx -> new RawTransaction(tx))
+				.collect(Collectors.toCollection(ArrayList<RawTransaction>::new));
+		return clone;
 	}
 
 	/**
 	 * @param txns
 	 *            the txns to set
+	 * @throws InstantiationException
 	 */
-	public void setTxns(RawTransaction[] txns) {
-		this.txns = txns;
+	public void setTxns(ArrayList<RawTransaction> txns) {
+		
 	}
 
 	@Override

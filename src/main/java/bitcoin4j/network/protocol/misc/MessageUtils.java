@@ -17,22 +17,21 @@
  * THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package bitcoin4j.network.protocol.encoding;
+package bitcoin4j.network.protocol.misc;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
 import bitcoin4j.network.protocol.structs.CompactInteger;
 
-class MessageUtils {
+public class MessageUtils {
 
 	public MessageUtils() {
 	}
 
 	public static byte[] encodeHeaderCommandName(String commandName) {
 		byte[] buff = null;
-		
+
 		try {
 			byte[] command = commandName.getBytes("UTF8");
 			buff = new byte[12];
@@ -40,13 +39,13 @@ class MessageUtils {
 		} catch (UnsupportedEncodingException e) {
 			// TODO Log error message
 		}
-		
+
 		return buff;
 	}
 
 	public static byte[] encodeHeaderChecksum(byte[] payload) {
 		byte[] headerChecksum = null;
-		
+
 		try {
 			MessageDigest digest = MessageDigest.getInstance("SHA-256");
 			byte[] checksum = digest.digest(payload);
@@ -60,10 +59,10 @@ class MessageUtils {
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Log error message
 		}
-		
+
 		return headerChecksum;
 	}
-	
+
 	public static byte[] encodeCompactInteger(long x) {
 		return new CompactInteger(x).toByteArray();
 	}

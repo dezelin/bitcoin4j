@@ -22,6 +22,8 @@
  */
 package bitcoin4j.network.protocol.structs;
 
+import java.util.Arrays;
+
 /**
  * @author dezelin
  *
@@ -46,6 +48,16 @@ public class BlockHeader {
 		this.setTxnCount(new CompactInteger(0));
 	}
 
+	public BlockHeader(BlockHeader blockHeader) {
+		this.setVersion(blockHeader.getVersion());
+		this.setPrevBlockHeaderHash(blockHeader.getPrevBlockHeaderHash());
+		this.setMerkleRootHash(blockHeader.getMerkleRootHash());
+		this.setTime(blockHeader.getTime());
+		this.setnBits(blockHeader.getnBits());
+		this.setNonce(blockHeader.getNonce());
+		this.setTxnCount(blockHeader.getTxnCount());
+	}
+
 	/**
 	 * @return the version
 	 */
@@ -65,7 +77,7 @@ public class BlockHeader {
 	 * @return the prevBlockHeaderHash
 	 */
 	public byte[] getPrevBlockHeaderHash() {
-		return prevBlockHeaderHash;
+		return Arrays.copyOf(prevBlockHeaderHash, prevBlockHeaderHash.length);
 	}
 
 	/**
@@ -73,14 +85,14 @@ public class BlockHeader {
 	 *            the prevBlockHeaderHash to set
 	 */
 	public void setPrevBlockHeaderHash(byte[] prevBlockHeaderHash) {
-		this.prevBlockHeaderHash = prevBlockHeaderHash;
+		this.prevBlockHeaderHash = Arrays.copyOf(prevBlockHeaderHash, prevBlockHeaderHash.length);
 	}
 
 	/**
 	 * @return the merkleRootHash
 	 */
 	public byte[] getMerkleRootHash() {
-		return merkleRootHash;
+		return Arrays.copyOf(merkleRootHash, merkleRootHash.length);
 	}
 
 	/**
@@ -88,7 +100,7 @@ public class BlockHeader {
 	 *            the merkleRootHash to set
 	 */
 	public void setMerkleRootHash(byte[] merkleRootHash) {
-		this.merkleRootHash = merkleRootHash;
+		this.merkleRootHash = Arrays.copyOf(merkleRootHash, merkleRootHash.length);
 	}
 
 	/**
@@ -140,14 +152,14 @@ public class BlockHeader {
 	 * @return the txnCount
 	 */
 	public CompactInteger getTxnCount() {
-		return txnCount;
+		return new CompactInteger(txnCount);
 	}
 
 	/**
 	 * @param txnCount the txnCount to set
 	 */
 	public void setTxnCount(CompactInteger txnCount) {
-		this.txnCount = txnCount;
+		this.txnCount = new CompactInteger(txnCount);
 	}
 
 }

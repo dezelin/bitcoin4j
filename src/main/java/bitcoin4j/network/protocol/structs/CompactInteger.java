@@ -35,6 +35,10 @@ public class CompactInteger {
 		this.setValue(value);
 	}
 
+	public CompactInteger(CompactInteger txnCount) {
+		this(txnCount.getValue());
+	}
+
 	/**
 	 * @return the value
 	 */

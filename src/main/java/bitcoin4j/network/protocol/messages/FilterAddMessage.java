@@ -52,11 +52,11 @@ public class FilterAddMessage implements ControlMessage {
 	}
 
 	public byte[] getElement() {
-		return element;
+		return element.clone();
 	}
 
 	public void setElement(byte[] element) {
-		this.element = element;
+		this.element = element.clone();
 	}
 
 }

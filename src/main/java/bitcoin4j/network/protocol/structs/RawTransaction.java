@@ -40,6 +40,13 @@ public class RawTransaction {
 		this.setLockTime(lockTime);
 	}
 
+	public RawTransaction(RawTransaction tx) {
+		this.setVersion(tx.version);
+		this.setTxIn(tx.txIn);
+		this.setTxOut(tx.txOut);
+		this.setLockTime(tx.lockTime);
+	}
+
 	/**
 	 * @return the version
 	 */

@@ -32,9 +32,7 @@ import org.junit.Test;
 
 import bitcoin4j.network.protocol.encoding.MessageSerializer;
 import bitcoin4j.network.protocol.enums.ServiceIdentifiersEnum;
-import bitcoin4j.network.protocol.messages.AddrMessage;
 import bitcoin4j.network.protocol.messages.VersionMessage;
-import bitcoin4j.network.protocol.structs.IPAddress;
 
 /**
  * @author dezelin

@@ -61,11 +61,11 @@ public class FilterLoadMessage implements ControlMessage {
 	}
 
 	public byte[] getFilter() {
-		return filter;
+		return filter.clone();
 	}
 
 	public void setFilter(byte[] filter) {
-		this.filter = filter;
+		this.filter = filter.clone();
 	}
 
 	public int getnHashFunc() {

@@ -22,14 +22,17 @@
  */
 package bitcoin4j.network.protocol;
 
+import java.util.List;
+import java.util.concurrent.Future;
+
+import bitcoin4j.network.protocol.messages.Message;
+import bitcoin4j.network.protocol.messages.Reply;
+import bitcoin4j.network.swarm.Peer;
+
 /**
  * @author dezelin
  *
  */
 public interface Protocol {
-
-	/*
-	 * Data messages
-	 */
-
+	public Future<List<Reply>> sendMessage(Peer peer, Message message);
 }

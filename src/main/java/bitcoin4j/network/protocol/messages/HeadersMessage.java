@@ -62,7 +62,7 @@ public class HeadersMessage implements DataMessage {
 	 * @return the blockHeaders
 	 */
 	public BlockHeader[] getBlockHeaders() {
-		return blockHeaders;
+		return deepCopy(blockHeaders);
 	}
 
 	/**
@@ -70,7 +70,16 @@ public class HeadersMessage implements DataMessage {
 	 *            the blockHeaders to set
 	 */
 	public void setBlockHeaders(BlockHeader[] blockHeaders) {
-		this.blockHeaders = blockHeaders;
+		this.blockHeaders = deepCopy(blockHeaders);
+	}
+	
+	private BlockHeader[] deepCopy(BlockHeader[] headers) {
+		BlockHeader[] copy = new BlockHeader[headers.length];
+		for(int i = 0; i < headers.length; ++i) {
+			copy[i] = new BlockHeader(headers[i]);
+		}
+		
+		return copy;
 	}
 
 }

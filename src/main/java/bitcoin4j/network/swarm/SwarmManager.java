@@ -17,68 +17,15 @@
  * THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package bitcoin4j.network;
+/**
+ * 
+ */
+package bitcoin4j.network.swarm;
 
-import java.net.InetAddress;
-import java.util.List;
-import com.sun.xml.internal.ws.util.CompletedFuture;
+/**
+ * @author dezelin
+ *
+ */
+public interface SwarmManager {
 
-import bitcoin4j.network.swarm.Peer;
-import bitcoin4j.network.swarm.Seed;
-
-public class BitcoinPeer implements Peer, Seed {
-
-	private InetAddress address;
-	private int port;
-
-	public BitcoinPeer(InetAddress address, int port) {
-		this.address = address;
-		this.port = port;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see network.Peer#getAddress()
-	 */
-	@Override
-	public InetAddress getAddress() {
-		return address;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see network.Peer#setAddress(java.net.InetAddress)
-	 */
-	@Override
-	public void setAddress(InetAddress address) {
-		this.address = address;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see network.Peer#getPort()
-	 */
-	@Override
-	public int getPort() {
-		return port;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see network.Peer#setPort(int)
-	 */
-	@Override
-	public void setPort(int port) {
-		this.port = port;
-	}
-
-	@Override
-	public CompletedFuture<List<Peer>> retrievePeers() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

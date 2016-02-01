@@ -22,6 +22,8 @@
  */
 package bitcoin4j.network.protocol.messages;
 
+import bitcoin4j.network.protocol.misc.MessageUtils;
+
 /**
  * @author dezelin
  *
@@ -80,7 +82,7 @@ public class GetHeadersMessage implements DataMessage {
 	 * @return the blockLocatorHashes
 	 */
 	public byte[][] getBlockLocatorHashes() {
-		return blockLocatorHashes;
+		return MessageUtils.deepCopyByteMatrix(blockLocatorHashes);
 	}
 
 	/**
@@ -88,14 +90,14 @@ public class GetHeadersMessage implements DataMessage {
 	 *            the blockLocatorHashes to set
 	 */
 	public void setBlockLocatorHashes(byte[][] blockLocatorHashes) {
-		this.blockLocatorHashes = blockLocatorHashes;
+		this.blockLocatorHashes = MessageUtils.deepCopyByteMatrix(blockLocatorHashes);
 	}
 
 	/**
 	 * @return the stopHash
 	 */
 	public byte[] getStopHash() {
-		return stopHash;
+		return stopHash.clone();;
 	}
 
 	/**
@@ -103,7 +105,7 @@ public class GetHeadersMessage implements DataMessage {
 	 *            the stopHash to set
 	 */
 	public void setStopHash(byte[] stopHash) {
-		this.stopHash = stopHash;
+		this.stopHash = stopHash.clone();
 	}
 
 }

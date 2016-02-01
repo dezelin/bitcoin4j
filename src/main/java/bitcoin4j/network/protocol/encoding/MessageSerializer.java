@@ -45,6 +45,7 @@ import bitcoin4j.network.protocol.messages.SendHeadersMessage;
 import bitcoin4j.network.protocol.messages.TxMessage;
 import bitcoin4j.network.protocol.messages.VerAckMessage;
 import bitcoin4j.network.protocol.messages.VersionMessage;
+import bitcoin4j.network.protocol.misc.MessageUtils;
 import bitcoin4j.network.protocol.structs.MessageHeader;
 
 import java.io.InvalidClassException;
@@ -286,14 +287,14 @@ public class MessageSerializer implements MessageEncoder {
 			return null;
 		}
 
-		byte[] flatted = new byte[l];
+		byte[] flatten = new byte[l];
 		l = 0;
 		for (byte[] a : arr) {
-			System.arraycopy(a, 0, flatted, l, a.length);
+			System.arraycopy(a, 0, flatten, l, a.length);
 			l += a.length;
 		}
 
-		return flatted;
+		return flatten;
 	}
 
 	private static byte[] encodeLittleEndian(short x) {

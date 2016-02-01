@@ -22,8 +22,6 @@
  */
 package bitcoin4j.network.protocol.structs;
 
-import java.security.InvalidParameterException;
-
 /**
  * @author dezelin
  *
